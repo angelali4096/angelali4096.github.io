@@ -86,6 +86,14 @@
             <p>Notes: </p>
             <p>The shifts are 2*dimension + 0.01 because of the way the Blender Python API defines objects. They are given an x, y, z coordinate as its center and extend by some length in each dimension. The 0.01 offset is to make sure that the objects do not collide.</p>
             <p>The check_intersect is a method that defines a polygon and uses the Separating Axis Theorem to check if they intersect. In Python, (as I have discovered later) there is a shapely.geometry module that contains a function that checks if two polygons intersect.</p>
+            <div class="results">
+                <h1>Results</h1>
+            </div>
+            <div>
+                Below are the simulations of blocks before and after processing, respectively. To test the algorithm, all input coordinates were randomly generated to emulate the worst possible error from the visual system. As you can see, the input coordinates lead to blocks that are unsupported (floating) and overlapping. After the processing algorithm, the overlapping blocks are shifted so that they stack and the floating blocks are now supported.
+            </div>
+            <img src="im9.png" alt="nine" width="600">
+            <img src="im10.png" alt="ten" width="600">
             <div class="clear">&nbsp;</div>
             </div>
 <div id="footer">
