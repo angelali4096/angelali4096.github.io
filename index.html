@@ -33,18 +33,33 @@
             <p>Instructions</p>
             <ul>
                 <li>Set Ground Plane</li>
-                <p>On the left edge of the UI, there are several tabs, one of which is labelled "Create". This tab allows the creation of object primitives in Blender. For the ground plane, select the "Plane" option under "Mesh". <img src="im1.png" alt="hi" class="inline"> </p>
+                <p>On the left edge of the UI, there are several tabs, one of which is labelled "Create". This tab allows the creation of object primitives in Blender. For the ground plane, select the "Plane" option under "Mesh". <img src="im1.png" alt="hi"> </p>
                 <li>Create Block</li>
+                <p>Under the same tab, create a Keva block by creating a primitive "Cube". To the right of the main "User perspective" window, there is a "Transform" menu. While the cube is selected, change the settings under "Location" and "Rotation" to specify the orientation of the block, and "Scale" to define the dimensions. <img src="im2.png" alt="hit"></p>
                 <li>Duplicate</li>
             </ul>
 
-            <p>Blender relies on keyframes designated by the user and interpolates between the keyframes to achieve animation. Depending on how these frames are set, the ball will </p>
-
-
+            <p>Blender relies on keyframes designated by the user and interpolates between the keyframes to achieve animation. Depending on how these frames are set, the ball will collide with the tower at a speed the user defines. This is especially useful if the ball is set at the top of a built structure and made to roll down a ramp to collide with a structure. Here, there would a single keyframe where the ball is initially set and all further dynamics would be calculated internally.</p>
+            <p> To add a keyframe, move the sliding time designator to a certain timeframe, move the ball a certain distance toward the tower. Afterwards, select the key icon on the bar to the lower right-hand side. To have the ball continue onward
+            </p>
             </div>
+            <div class="second_main">
+                <h1>Gathering Frame Data via Python</h1>
 			</div>
+
+            <div class="more_body">
+                <p>
+                The animation is saved into a ".blend" file that encapsulates all the simulation data. This can be passed into a python script that can unpack all the data pertaining to each frame. The following code will do as such: <img src="im3.png" alt="bit">.
+                </p>
+                <p>Line 1: Import the Blender python module</p>
+                <p>Line 3: The number of frames is, by default, 250.</p>
+                <p>Line 6: All the mesh objects are stored in bpy.data.objects</p>
+                <p>Line 8: Data is categorized by frame. Setting the frame number will lookup all the object data pertaining to that specific frame.</p>
+                <p>Line 9 - 11: This appends several fields (name, translation vector, rotation matrix) to an array.</p>
+                <p>There are many more fields that the object structure contains. I have only listed those I thought were most important. Data like this can be the input to other algorithms (e.g. learning algorithms)</p>
+            </div>
             <div class="clear">&nbsp;</div>
-        </div>
+            </div>
 <div id="footer">
         <p>
         <a href="http://www.bryantsmith.com/template">xhtml template</a> by <a href="http://www.bryantsmith.com">web page designer</a></p>
