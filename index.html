@@ -34,10 +34,10 @@
             <ul>
                 <li>Set Ground Plane</li>
                 <p>On the left edge of the UI, there are several tabs, one of which is labelled "Create". This tab allows the creation of object primitives in Blender. For the ground plane, select the "Plane" option under "Mesh". </p>
-                <img src="im1.png" alt="hi">
+                <img src="im1.png" alt="hi" height="300">
                 <li>Create Block</li>
                 <p>Under the same tab, create a Keva block by creating a primitive "Cube". To the right of the main "User perspective" window, there is a "Transform" menu. While the cube is selected, change the settings under "Location" and "Rotation" to specify the orientation of the block, and "Scale" to define the dimensions.</p>
-                <img src="im2.png" alt="hit">
+                <img src="im2.png" alt="hit" height="300">
                 <p>To define the physical properties of the objects, go to the window on the right-most side. Under "Rigid Bodies", set the type to be "Active." "Active" objects are subject to gravity; "Passive" objects are not. Set "Shape" to be "Box" under "Rigid Body Collisions," which will enable rendering to be faster than "Mesh".</p>
                 <li>Duplicate</li>
                 <p></p>
@@ -54,7 +54,7 @@
             <div class="more_body">
                 <p>
                 The animation is saved into a ".blend" file that encapsulates all the simulation data. This can be passed into a python script that can unpack all the data pertaining to each frame. The following code will do as such: </p>
-                <img src="im3.png" alt="bit">
+                <img src="im3.png" alt="bit" width="400">
                 <p>Line 1: Import the Blender python module</p>
                 <p>Line 3: The number of frames is, by default, 250.</p>
                 <p>Line 6: All the mesh objects are stored in bpy.data.objects</p>
