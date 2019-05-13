@@ -57,7 +57,7 @@
             <div class="more_body">
                 <p>
                 The animation is saved into a ".blend" file that encapsulates all the simulation data. This can be passed into a python script that can unpack all the data pertaining to each frame. The following code will do as such: </p>
-                <img src="im3.png" alt="bit" width="500">
+                <img src="im3.png" alt="bit" width="600">
                 <p>Line 1: Import the Blender python module</p>
                 <p>Line 3: The number of frames is, by default, 250.</p>
                 <p>Line 6: All the mesh objects are stored in bpy.data.objects</p>
@@ -66,10 +66,18 @@
                 <p>There are many more fields that the object structure contains. I have only listed those I thought were most important. Data like this can be the input to other algorithms (e.g. learning algorithms)</p>
             </div>
 
+            <div class="error">
+                <h1> Error Correction with Simulation </h1>
+            </div>
             <div class="Error Correction">
                 <p>
                     One application that simulation may be applied is visualizing data that another system gives. In this case, that would be the vision system. As with from any sensor, the coordinates of the block locations given by the visual system may be erroneous. In the worst case, these coordinates may imply that blocks are overlapping within each other or some blocks are floating without support. One way we can combat this error is through processing the coordinates given by the visual system and rendering the processed coordinates in simulation to see if they correspond to the "ground truth," or the actual, physical layout of the blocks.
                 </p>
+                <p>
+                However, we do not want the simulation to completely throw away the data from the vision system, merely correct it such that the blocks are not overlapping or floating. Therefore, the heuristic that I define will be to minimize the dot product between the corrected coordinates and the given coordinates.
+                </p>
+                <p>
+                The algorithm I created borrows on the Separating Axis Theorem, which states that if we can find an axis along which the projection
             </div>
             <div class="clear">&nbsp;</div>
             </div>
