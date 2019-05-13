@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
-<title>Multi-Blue by Bryant Smith</title>
+<title>Humanoids</title>
 </head>
 
 <body>
@@ -77,8 +77,15 @@
                 However, we do not want the simulation to completely throw away the data from the vision system, merely correct it such that the blocks are not overlapping or floating. Therefore, the heuristic that I define will be to minimize the dot product between the corrected coordinates and the given coordinates.
                 </p>
                 <p>
-                The algorithm I created borrows on the Separating Axis Theorem, which states that if we can find an axis along which the projection
+                The algorithm I created borrows on the Separating Axis Theorem, which states that if we can find an axis along which the projection of the two shapes does not overlap, then the shapes do not overlap. A separating axis is defined to be perpendicular to a polygon's edge. This theorem only applies to convex polygons. The following image illustrates this theorem.
             </div>
+            <img src="img7.png" alt="seven" width="300">
+            <p>To simplify the problem, I first attempted to limit the overlap to 2-dimensional space. The algorithm would keep a list that has the invariant that all blocks within this list is non-overlapping. I will iteratively place blocks into this list, shifting the new block's x-coordinate until it overlaps with no other blocks. This immediately leads to the issue of having a staircase setup, where new blocks just continuously shift until it does not project onto an other blocks. This would continue until there is no correlation between the initial given coordinates and the corrected ones.</p>
+            <p>Surprisingly, this problem is mitigated by expanding the problem to 3 dimensions. The idea behind the algorithm remains the same; maintain a list of non-overlapping blocks. However, there is notion of "height" that allows for a possible shift in the z direction. In fact, to accomplish our goal of minimizing the dot product between the given and corrected coordinates, shifting in the z-dimension would should be prioritized, because it is the smallest dimension. If there is still an intersection, then there will be a shift in the x-direction, lastly followed by a shift in the y-direction. The pseudocode is included below.</p>
+            <img src="img8.png" alt="eight" width="600">
+            <p>Notes: </p>
+            <p>The shifts are 2*dimension + 0.01 because of the way the Blender Python API defines objects. They are given an x, y, z coordinate as its center and extend by some length in each dimension. The 0.01 offset is to make sure that the objects do not collide.</p>
+            <p>The check_intersect is a method that defines a polygon and uses the Separating Axis Theorem to check if they intersect. In Python, (as I have discovered later) there is a shapely.geometry module that contains a function that checks if two polygons intersect.</p>
             <div class="clear">&nbsp;</div>
             </div>
 <div id="footer">
